@@ -1,0 +1,453 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.jiy.nlp</groupId>
+  <artifactId>jimmy-nlp</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>jimmy-nlp</name>
+  <url>http://maven.apache.org</url>
+  
+  <repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository</name>
+			<url>https://repo1.maven.org/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+		   <id>sonatype-snapshots</id>
+		   <name>sonatype snapshots repo</name>
+		   <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<id>apache-repo</id>
+			<name>Apache Repository</name>
+			<url>https://repository.apache.org/content/repositories/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jboss-repo</id>
+			<name>JBoss Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype</id>
+			<name>sonatype repository</name>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+  
+  <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+  </licenses>
+
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <xerces.jdiff.version>2.11.0</xerces.jdiff.version>
+
+		<commons-daemon.version>1.0.13</commons-daemon.version>
+
+		<test.build.dir>${project.build.directory}/test-dir</test.build.dir>
+		<test.build.data>${test.build.dir}</test.build.data>
+
+		<java.security.egd>file:///dev/urandom</java.security.egd>
+
+		<findbugs.version>3.0.0</findbugs.version>
+
+		<!-- define the Java language version used by the compiler -->
+		<java.version>1.8</java.version>
+		<javac.version>1.8</javac.version>
+		<scala.major.version>2.11</scala.major.version>
+		<!--2.11.8 -->
+		<scala.version>2.11.8</scala.version>
+		<scalatest.version>2.2.4</scalatest.version>
+
+		<!-- platform encoding override -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+
+		<!-- maven plugin versions -->
+		<maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
+		<maven-site-plugin.version>3.4</maven-site-plugin.version>
+		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
+		<maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
+		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
+		<apache-rat-plugin.version>0.10</apache-rat-plugin.version>
+		<wagon-ssh.version>1.0</wagon-ssh.version>
+		<maven-bundle-plugin.version>2.5.0</maven-bundle-plugin.version>
+		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+		<maven-checkstyle-plugin.version>2.15</maven-checkstyle-plugin.version>
+		<checkstyle.version>6.6</checkstyle.version>
+		<os-flag>linux64</os-flag>
+
+
+		<!-- Plugin versions and config -->
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+		<maven-surefire-report-plugin.version>${maven-surefire-plugin.version}</maven-surefire-report-plugin.version>
+		<maven-failsafe-plugin.version>${maven-surefire-plugin.version}</maven-failsafe-plugin.version>
+
+		<maven-clean-plugin.version>2.5</maven-clean-plugin.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-jar-plugin.version>2.5</maven-jar-plugin.version>
+		<maven-war-plugin.version>2.4</maven-war-plugin.version>
+		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
+		<maven-pdf-plugin.version>1.2</maven-pdf-plugin.version>
+		<build-helper-maven-plugin.version>1.9</build-helper-maven-plugin.version>
+		<exec-maven-plugin.version>1.3.1</exec-maven-plugin.version>
+		<make-maven-plugin.version>1.0-beta-1</make-maven-plugin.version>
+		<native-maven-plugin.version>1.0-alpha-8</native-maven-plugin.version>
+		<maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
+
+		<hadoop.version>2.7.3</hadoop.version>
+		<guava.version>11.0.2</guava.version>
+		<thrift.path>thrift</thrift.path>
+		<thrift.version>0.9.2</thrift.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
+		<jetty.version>6.1.26</jetty.version>
+		<jetty.jspapi.version>6.1.14</jetty.jspapi.version>
+		<commons-cli.version>1.2</commons-cli.version>
+		<junit.version>4.11</junit.version>
+		<commons-codec.version>1.9</commons-codec.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-math.version>3.6</commons-math.version>
+		<collections.version>3.2.1</collections.version>
+		<scoverage.plugin.version>1.1.1</scoverage.plugin.version>
+		<spark-version.project>bigdl-SPARK_2.1</spark-version.project>
+		<spark.version>2.1.1</spark.version>
+
+
+		<!-- 默认的scope，表示 dependency 都可以在生命周期中使用。而且，这些dependencies 会传递到依赖的项目中。适用于所有阶段，会随着项目一起发布 
+			开完完毕修改为 provided -->
+		<!--<spark-scope>compile</spark-scope> -->
+		<spark-scope>provided</spark-scope>
+		<!-- Linux -->
+		<!--<mkl-java-os-version>mkl-java</mkl-java-os-version> -->
+		<!-- Windows -->
+		<mkl-java-os-version>mkl-java-win64</mkl-java-os-version>
+		<BIGDL_VERSION>0.4.0</BIGDL_VERSION>
+
+		<!-- nd4j -->
+		<nd4j-scope>provided</nd4j-scope>
+		<nd4j.backend>nd4j-native-platform</nd4j.backend>
+		<nd4j.version>0.9.1</nd4j.version>
+		<dl4j.version>0.9.1</dl4j.version>
+		<datavec.version>0.9.1</datavec.version>
+		<arbiter.version>0.9.1</arbiter.version>
+		<rl4j.version>0.9.1</rl4j.version>
+		<scala.binary.version>2.11</scala.binary.version>
+		<datavec.spark.version>0.9.1_spark_2</datavec.spark.version>
+        
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
+        <maven.compiler.testSource>1.8</maven.compiler.testSource>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <deeplearning4j.version>1.0.0-SNAPSHOT</deeplearning4j.version>
+        <dl4j.version>1.0.0-SNAPSHOT</dl4j.version>
+        <nd4j.version>1.0.0-SNAPSHOT</nd4j.version>
+        <datavec.version>1.0.0-SNAPSHOT</datavec.version>
+        <dl4j-test-resources.version>1.0.0-SNAPSHOT</dl4j-test-resources.version>
+
+        <oshi.version>3.4.2</oshi.version>
+        <kafka.version>0.10.1.1</kafka.version>
+        <akka.version>2.3.16</akka.version>
+        <typesafe.config.version>1.3.0</typesafe.config.version>
+        <py4j.version>0.10.4</py4j.version>
+        <jcommander.version>1.27</jcommander.version>
+        <dropwizard.version>0.8.0</dropwizard.version>
+        <jodatime.version>2.9.2</jodatime.version>
+        <protonpack.version>1.15</protonpack.version>
+        <poi.version>3.17</poi.version>
+        <play.version>2.4.6</play.version>
+        <freemarker.version>2.3.23</freemarker.version>
+        <geoip2.version>2.8.1</geoip2.version>
+        <stream.analytics.version>2.7.0</stream.analytics.version>
+        <opencsv.version>2.3</opencsv.version>
+        <tdigest.version>3.2</tdigest.version>
+        <jtransforms.version>3.1</jtransforms.version>
+        <fastutil.version>6.5.7</fastutil.version>
+        <unirest.version>1.4.9</unirest.version>
+        <reflections.version>0.9.10</reflections.version>
+
+        <javacpp.parser.skip>false</javacpp.parser.skip>     <!-- To skip header file parsing phase: -Djavacpp.parser.skip=true  -->
+        <javacpp.compiler.skip>false</javacpp.compiler.skip> <!-- To skip native compilation phase: -Djavacpp.compiler.skip=true -->
+        <javacpp.platform>${os.name}-${os.arch}</javacpp.platform> <!-- For Android: -Dplatform=android-arm -->
+        <javacpp.platform.root/>      <!-- -Djavacpp.platform.root=/path/to/android-ndk/ -->
+        <javacpp.platform.compiler/>  <!-- -Djavacpp.platform.compiler=/path/to/arm-linux-androideabi-g++ -->
+        <javacpp.platform.sysroot/>   <!-- -Djavacpp.platform.sysroot=$(xcrun -sdk iphoneos -show-sdk-path) -->
+        <javacpp.platform.extension/> <!-- -Djavacpp.platform.extension=avx512 -->
+        <javacpp.platform.properties>${javacpp.platform}</javacpp.platform.properties>
+
+        <javacpp.version>1.4.2</javacpp.version>
+        <javacpp-presets.version>1.4.2</javacpp-presets.version>
+        <javacv.version>1.4.2</javacv.version>
+        <openblas.version>0.3.0</openblas.version>
+        <mkl.version>2018.3</mkl.version>
+        <mkl-dnn.version>0.15</mkl-dnn.version>
+        <opencv.version>3.4.2</opencv.version>
+        <ffmpeg.version>4.0.1</ffmpeg.version>
+        <leptonica.version>1.76.0</leptonica.version>
+        <hdf5.version>1.10.2</hdf5.version>
+        <ale.version>0.6.0</ale.version>
+        <tensorflow.version>1.9.0</tensorflow.version>
+        <tensorflow.javacpp.version>${tensorflow.version}-${javacpp-presets.version}</tensorflow.javacpp.version>
+
+        <commons-compress.version>1.16.1</commons-compress.version>
+        <commonsmath.version>3.4.1</commonsmath.version>
+        <commonslang.version>3.4</commonslang.version>
+        <commonsio.version>2.4</commonsio.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commons.math.version>${commonsmath.version}</commons.math.version>
+        <commons.lang.version>${commonslang.version}</commons.lang.version>
+        <commons.io.version>${commonsio.version}</commons.io.version>
+        <commons-math3.version>${commonsmath.version}</commons-math3.version>
+        <commons-lang3.version>${commonslang.version}</commons-lang3.version>
+        <commons-io.version>${commonsio.version}</commons-io.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
+
+        <args4j.version>2.0.29</args4j.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <junit.version>4.12</junit.version>
+        <logback.version>1.2.3</logback.version>
+        <jackson.version>2.5.1</jackson.version>
+        <spark.jackson.version>2.4.4</spark.jackson.version>
+        <typesafe.config.version>1.3.0</typesafe.config.version>
+        <lombok.version>1.18.0</lombok.version>
+        <cleartk.version>2.0.0</cleartk.version>
+        <lucene-solr.version>7.4.0</lucene-solr.version>
+        <json.version>20131018</json.version>
+        <google.protobuf.version>2.6.1</google.protobuf.version>
+        <failIfNoTests>false</failIfNoTests>
+        <hadoop.version>2.2.0
+        </hadoop.version>  <!-- Hadoop version used by Spark 1.6.3 and 2.2.1 (and likely others) -->
+        <spark.version>1.6.3</spark.version>
+        <camel.version>2.18.2</camel.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <agrona.version>0.5.4</agrona.version>
+        <mapdb.version>3.0.5</mapdb.version>
+        <sqlite.version>3.15.1</sqlite.version>
+        <playframework.version>2.4.8
+        </playframework.version>    <!-- Play Framework 2.5 dropped Scala 2.10 support - use 2.4 for Spark compatibility w/ Scala 2.10 -->
+        <javax.ws.rs.version>2.0</javax.ws.rs.version>
+        <guava.version>20.0</guava.version>
+        <jetbrains-annotations.version>13.0</jetbrains-annotations.version>
+        <fbs.version>1.2.0-3f79e055</fbs.version>
+        <threadly.version>4.10.0</threadly.version>
+        <spark.version>2.1.1</spark.version>
+
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-scala-plugin.version>3.3.1</maven-scala-plugin.version>
+        <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
+        <sbt-compiler-maven-plugin.version>1.0.0-beta8</sbt-compiler-maven-plugin.version>
+        <maven-git-commit-plugin.version>2.2.2</maven-git-commit-plugin.version>
+        <maven-git-commit-id-plugin.version>${maven-git-commit-plugin.version}
+        </maven-git-commit-id-plugin.version>
+        <maven-build-helper-plugin.version>3.0.0</maven-build-helper-plugin.version>
+        <maven-play2-plugin.version>1.0.0-beta5</maven-play2-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-surefire.version>${maven-surefire-plugin.version}</maven-surefire.version>
+        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+        <maven-lint-plugin.version>0.0.11</maven-lint-plugin.version>
+        <maven-formatter-plugin.version>2.0.0</maven-formatter-plugin.version>
+        <maven-lifecycle-mapping-plugin.version>1.0.0</maven-lifecycle-mapping-plugin.version>
+        <maven-lifecycle-mapping.version>${maven-lifecycle-mapping-plugin.version}
+        </maven-lifecycle-mapping.version>
+        <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <mockito.version>2.2.6</mockito.version>
+
+        <!-- base versions -->
+        <!-- Scala 2.10.x -->
+        <scala210.version>2.10.7</scala210.version>
+        <scala210.binary.version>2.10</scala210.binary.version>
+        <!-- Scala 2.11.x -->
+        <scala211.version>2.11.12</scala211.version>
+        <scala211.binary.version>2.11</scala211.binary.version>
+
+        <scalatest.version>3.0.5</scalatest.version>
+        <scalafmt.version>1.3.0</scalafmt.version>
+        <scalacheck.version>1.13.5</scalacheck.version>
+
+        <skipTestResourceEnforcement>false
+        </skipTestResourceEnforcement> <!-- Test resource profile must be enabled unless using -DskipTests etc -->
+  </properties>
+
+  <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+		    <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-keras</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_${scala.major.version}</artifactId>
+			<version>${spark.version}</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-mllib_${scala.major.version}</artifactId>
+			<version>${spark.version}</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.scalanlp</groupId>
+			<artifactId>breeze_${scala.major.version}</artifactId>
+			<version>0.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scalanlp</groupId>
+			<artifactId>breeze-viz_${scala.major.version}</artifactId>
+			<version>0.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scalanlp</groupId>
+			<artifactId>breeze-macros_${scala.major.version}</artifactId>
+			<version>0.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scalanlp</groupId>
+			<artifactId>breeze-natives_${scala.major.version}</artifactId>
+			<version>0.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.typesafe</groupId>
+			<artifactId>config</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.fommil.netlib</groupId>
+			<artifactId>core</artifactId>
+			<version>1.1.2</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.18</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.f2j</groupId>
+			<artifactId>arpack_combined_all</artifactId>
+			<version>0.1</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.scalanlp</groupId>
+			<artifactId>jblas</artifactId>
+			<version>1.2.1</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>11.0.2</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.scopt</groupId>
+			<artifactId>scopt_${scala.major.version}</artifactId>
+			<version>3.2.0</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>it.unimi.dsi</groupId>
+			<artifactId>fastutil</artifactId>
+			<version>7.0.2</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.4</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.univocity/univocity-parsers -->
+		<dependency>
+			<groupId>com.univocity</groupId>
+			<artifactId>univocity-parsers</artifactId>
+			<version>2.5.9</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.4</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.platanios</groupId>
+			<artifactId>tensorflow_2.11</artifactId>
+			<version>0.1.1</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.platanios</groupId>
+			<artifactId>tensorflow-data_2.11</artifactId>
+			<version>0.1.1</version>
+			<scope>${spark-scope}</scope>
+		</dependency>
+  </dependencies>
+</project>
